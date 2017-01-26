@@ -122,9 +122,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\PaymentModeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DAL\ShopContext.cs" />
     <Compile Include="DAL\ShopInitializer.cs" />
@@ -139,10 +142,18 @@
     <Compile Include="Migrations\201701260631392_AddEmployeeAndDept.Designer.cs">
       <DependentUpon>201701260631392_AddEmployeeAndDept.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701261158349_CustomerNInvoice.cs" />
+    <Compile Include="Migrations\201701261158349_CustomerNInvoice.Designer.cs">
+      <DependentUpon>201701261158349_CustomerNInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\InvoiceDetail.cs" />
+    <Compile Include="Models\PaymentMode.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -196,6 +207,21 @@
     <Content Include="Views\Department\Details.cshtml" />
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Invoice\Create.cshtml" />
+    <Content Include="Views\Invoice\Delete.cshtml" />
+    <Content Include="Views\Invoice\Details.cshtml" />
+    <Content Include="Views\Invoice\Edit.cshtml" />
+    <Content Include="Views\Invoice\Index.cshtml" />
+    <Content Include="Views\PaymentMode\Create.cshtml" />
+    <Content Include="Views\PaymentMode\Delete.cshtml" />
+    <Content Include="Views\PaymentMode\Details.cshtml" />
+    <Content Include="Views\PaymentMode\Edit.cshtml" />
+    <Content Include="Views\PaymentMode\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612160644280_InitialCreate.resx">
@@ -203,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701260631392_AddEmployeeAndDept.resx">
       <DependentUpon>201701260631392_AddEmployeeAndDept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701261158349_CustomerNInvoice.resx">
+      <DependentUpon>201701261158349_CustomerNInvoice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

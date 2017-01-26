@@ -19,6 +19,11 @@ namespace EShop.DAL
         public DbSet<Department> Department { get; set; }
         public DbSet<Employee> Employee { get; set; }
 
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<PaymentMode> PaymentMode { get; set; }
+        public DbSet<Invoice> Invoice { get; set; }
+        public DbSet<InvoiceDetail> InvoiceDetail { get; set; }
+
       
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
