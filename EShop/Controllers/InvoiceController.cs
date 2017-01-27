@@ -74,13 +74,31 @@ namespace EShop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Invoice invoice = db.Invoice.Find(id);
+            
+
             if (invoice == null)
             {
                 return HttpNotFound();
             }
+            else
+            {
+                foreach (var i in invoice.InvoiceDetail)
+                {
+                    i.Product = db.Product.Find(i.ProductID);
+                }
+            }
+
+            
+
+        
+
+
             ViewBag.CustomerID = new SelectList(db.Customer, "CustomerID", "CustomerName", invoice.CustomerID);
             ViewBag.EmployeeID = new SelectList(db.Employee, "EmployeeID", "EmployeeName", invoice.EmployeeID);
             ViewBag.PaymentModeID = new SelectList(db.PaymentMode, "PaymentModeID", "PaymentModeName", invoice.PaymentModeID);
+            ViewBag.ProductID = new SelectList(db.Product, "ProductID", "ProductName");
+
+
             return View(invoice);
         }
 

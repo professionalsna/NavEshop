@@ -65,6 +65,62 @@
             </div>
         </div>
 
+
+        <!--Naveed-->
+        <div class="panel panel-default">
+            <div class="panel-heading">Invoice Detail </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                    <th>
+                     Product   
+                    </th>
+                    <th>
+                    Qty
+                    </th>
+                    <th>
+                       Price
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    </tr>
+                    @foreach (var item in Model.InvoiceDetail)
+                    {
+                       <tr>
+                        <td>@Html.DropDownList("ProductID", String.Empty) @item.ProductID 
+                          
+                           @{ var selc = new SelectListItem{
+                                Value = item.Product.ProductID.ToString(),
+                                Text = item.Product.ProductName,
+                                Selected = true                           
+                           };
+                           }
+
+                            @Html.DropDownListFor(m => item.ProductID, ViewBag.ProductID as SelectList ,item.Product.ProductName)
+
+
+                           @Html.DropDownListFor(m => m.InvoiceDetail, new SelectList(ViewBag.ProductID, "value", "text", item.ProductID.ToString()))
+
+                           @Html.DropDownList("ProductID", new SelectList(ViewBag.ProductID, "value", "text") )
+                           </td>
+                        <td>@item.Qty</td>
+                        <td>@item.Price</td>
+                        <td>@{ 
+                             var amount = item.Price * item.Qty;
+                            
+                             } @amount</td>
+                    </tr>
+                    }
+                   
+                    
+                </table>
+
+            </div>
+        </div>
+
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
