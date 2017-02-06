@@ -18,8 +18,12 @@ namespace EShop.Controllers
         // GET: /Invoice/
         public ActionResult Index()
         {
-            var invoice = db.Invoice.Include(i => i.Customer).Include(i => i.Employee).Include(i => i.PaymentMode);
-            return View(invoice.ToList());
+            var invoice = db.Invoice
+                .Include(i => i.Customer)
+                .Include(i => i.Employee)
+                .Include(i => i.PaymentMode).ToList();
+            
+            return View(invoice);
         }
 
         // GET: /Invoice/Details/5
@@ -40,10 +44,13 @@ namespace EShop.Controllers
         // GET: /Invoice/Create
         public ActionResult Create()
         {
+            
             ViewBag.CustomerID = new SelectList(db.Customer, "CustomerID", "CustomerName");
             ViewBag.EmployeeID = new SelectList(db.Employee, "EmployeeID", "EmployeeName");
             ViewBag.PaymentModeID = new SelectList(db.PaymentMode, "PaymentModeID", "PaymentModeName");
-            return View();
+            ViewBag.ProductID = new SelectList(db.Product, "ProductID", "ProductName");
+
+            return View(new Invoice());
         }
 
         // POST: /Invoice/Create
@@ -51,7 +58,8 @@ namespace EShop.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="InvoiceID,InvoiceDate,CustomerID,EmployeeID,InvoiceTotal,IsPaid,PaymentModeID")] Invoice invoice)
+        //public ActionResult Create([Bind(Include="InvoiceID,InvoiceDate,CustomerID,EmployeeID,InvoiceTotal,IsPaid,PaymentModeID")] Invoice invoice)
+        public ActionResult Create(Invoice invoice)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +71,7 @@ namespace EShop.Controllers
             ViewBag.CustomerID = new SelectList(db.Customer, "CustomerID", "CustomerName", invoice.CustomerID);
             ViewBag.EmployeeID = new SelectList(db.Employee, "EmployeeID", "EmployeeName", invoice.EmployeeID);
             ViewBag.PaymentModeID = new SelectList(db.PaymentMode, "PaymentModeID", "PaymentModeName", invoice.PaymentModeID);
+            ViewBag.ProductID = new SelectList(db.Product, "ProductID", "ProductName");
             return View(invoice);
         }
 
@@ -74,7 +83,14 @@ namespace EShop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Invoice invoice = db.Invoice.Find(id);
+
             
+               
+            var invoic2 = db.Invoice.Include(b=>b.InvoiceDetail).ToString();
+            // Load all blogs and related posts 
+           
+
+
 
             if (invoice == null)
             {

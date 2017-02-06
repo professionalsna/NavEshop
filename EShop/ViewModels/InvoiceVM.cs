@@ -12,6 +12,12 @@ namespace EShop.ViewModels
         public DateTime Date { get; set; }
         public Customer Customer { get; set; }
         public Employee Employee { get; set; }
+        public Invoice Invoice { get; set; }
+        public Product Product { get; set; }
+
+        //public InvoiceDetail InvoiceDetail { get; set; }
+        public virtual ICollection<InvoiceDetail> InvoiceDetail { get; set; }
+        
         
     }
 }

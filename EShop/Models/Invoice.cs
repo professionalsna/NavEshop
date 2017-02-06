@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EShop.Models
 {
@@ -21,5 +22,17 @@ namespace EShop.Models
         public Employee Employee { get; set; }
         public PaymentMode PaymentMode { get; set; }
 
+       [NotMapped]
+        private InvoiceDetail InvoiceLine { get; set; }
+
+        [NotMapped]
+        public Product Product { get; set; }
+        //public int ProductID { get;set;}
+        
+        public Invoice()
+        {
+            InvoiceDetail= new HashSet<InvoiceDetail>();
+   
+        }
     }
 }
