@@ -230,6 +230,7 @@
     <Content Include="Views\InvoiceDetail\Details.cshtml" />
     <Content Include="Views\InvoiceDetail\Edit.cshtml" />
     <Content Include="Views\InvoiceDetail\Index.cshtml" />
+    <Content Include="Views\Invoice\_InvoiceDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612160644280_InitialCreate.resx">

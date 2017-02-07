@@ -44,13 +44,14 @@ namespace EShop.Controllers
         // GET: /Invoice/Create
         public ActionResult Create()
         {
-            
+            var invoice = new Invoice();
+
             ViewBag.CustomerID = new SelectList(db.Customer, "CustomerID", "CustomerName");
             ViewBag.EmployeeID = new SelectList(db.Employee, "EmployeeID", "EmployeeName");
             ViewBag.PaymentModeID = new SelectList(db.PaymentMode, "PaymentModeID", "PaymentModeName");
             ViewBag.ProductID = new SelectList(db.Product, "ProductID", "ProductName");
-
-            return View(new Invoice());
+            
+            return View(invoice);
         }
 
         // POST: /Invoice/Create

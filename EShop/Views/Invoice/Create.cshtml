@@ -2,9 +2,9 @@
 
 @{
     ViewBag.Title = "Create";
-    //EShop.Models.InvoiceDetail line = new EShop.Models.InvoiceDetail();
-    //line.InvoiceID = 0;
-    
+    EShop.Models.InvoiceDetail line = new EShop.Models.InvoiceDetail();
+    line.InvoiceID = 0;
+    //var invd = Model.InvoiceDetail;
     
 }
 
@@ -67,7 +67,44 @@
                 @Html.ValidationMessageFor(model => model.PaymentModeID)
             </div>
         </div>
-        <!--Naveed-->
+     
+        
+      @*@Html.Partial("_InvoiceDetail", line);*@
+
+
+        @*<table class="table table-hover">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+
+            </tr>
+            <tr>
+                <td> <input type="text" name="InvoiceDetail[0].ProductID" value="2" /></td>
+                <td><input type="text" name="InvoiceDetail[0].Price" value="5" /></td>
+                <td><input type="text" name="InvoiceDetail[0].Qty" value="10" /></td>
+        
+            </tr>
+            <tr>
+                <td>        <input type="text" name="InvoiceDetail[1].ProductID" value="1" /></td>
+                <td><input type="text" name="InvoiceDetail[1].Price" value="50" /></td>
+                <td><input type="text" name="InvoiceDetail[1].Qty" value="5" /></td>
+
+            </tr>
+            <tr>
+                <td><input type="text" name="InvoiceDetail[2].ProductID" value="4" /></td>
+                <td><input type="text" name="InvoiceDetail[2].Price" value="10" /></td>
+                <td><input type="text" name="InvoiceDetail[2].Qty" value="20" /></td>
+
+
+
+            </tr>
+        </table>*@
+        
+        
+
+        
+           <!--Naveed-->
         
      
 
@@ -101,7 +138,21 @@
                             Amount
                         </th>
                     </tr>
+                    <tr class="template">
+                        <td class="prod">
+                            @*<input type="text" class="inv-productid" />*@
+                            @Html.DropDownList("ProductID", null, String.Empty, new { @class = "inv-productid" })
+                           
+                           
+                        </td>
+                        <td class="qty">
+                            <input type="text" class="inv-qty" />
+                            
+                        </td>
+                        <td class="price"><input type="text" class="inv-price" /></td>
+                        <td class="amount"></td>
 
+</tr>
 
                     @for (var  i = 0; i < Model.InvoiceDetail.Count; i++)
                     {
@@ -111,9 +162,10 @@
                             <td>
                                 <input type="hidden" name="InvoiceDetail[@(i)].ProductID" value="@item[i].ProductID" />
                                 <input type="hidden" name="InvoiceDetail[@(i)].Price" value="@item[i].Price" />
-                                <input type="hidden" name="InvoiceDetail[@(i)].Qty" value="@item[i].Price" />
+                                <input type="hidden" name="InvoiceDetail[@(i)].Qty" value="@item[i].Qty" />
 
-                                       @item[i].Product.ProductName></td>
+                             @*@item[i].Product.ProductName*@
+                            </td>
                             <td>@item[i].Qty</td>
                             <td>@item[i].Price</td>
                             <td>
@@ -147,6 +199,3 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -109,6 +109,82 @@
 
 
 
+        <div class="panel panel-default">
+            <div class="panel-heading">Invoice Detail </div>
+            <div class="panel-body">
+                <div class="form-group new-invoice">
+                    @Html.DropDownList("ProductID", null, String.Empty, new { @class = "invoice-product-id" })
+
+                    <input type="text" id="pQty" class="invoice-product-qty" />
+                    <input type="text" id="pPrice" class="invoice-product-price" />
+
+                    <button class="btn-info add-invoice-item">Add</button>
+
+                </div>
+
+
+                <table class="table invoice-table">
+                    <tr>
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                    </tr>
+                    <tr class="template">
+                        <td class="prod">
+                            <input type="hidden" class="inv-productid" />
+                            <input type="hidden" class="inv-qty" />
+                            <input type="hidden" class="inv-price" />
+
+                        </td>
+                        <td class="qty"></td>
+                        <td class="price"></td>
+                        <td class="amount"></td>
+
+                    </tr>
+
+                    @for (var i = 0; i < Model.InvoiceDetail.Count; i++)
+                    {
+                        var item = Model.InvoiceDetail.ToList();
+
+                        <tr>
+                            <td>
+                                <input type="hidden" name="InvoiceDetail[@(i)].ProductID" value="@item[i].ProductID" />
+                                <input type="hidden" name="InvoiceDetail[@(i)].Price" value="@item[i].Price" />
+                                <input type="hidden" name="InvoiceDetail[@(i)].Qty" value="@item[i].Qty" />
+
+                                @item[i].Product.ProductName
+                            </td>
+                            <td>@item[i].Qty</td>
+                            <td>@item[i].Price</td>
+                            <td>
+                                @{
+                        var amount = item[i].Price * item[i].Qty;
+
+                                } @amount
+                            </td>
+                        </tr>
+                    }
+
+
+                </table>
+
+
+
+            </div>
+        </div>
+
+
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
