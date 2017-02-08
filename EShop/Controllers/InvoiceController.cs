@@ -45,7 +45,8 @@ namespace EShop.Controllers
         public ActionResult Create()
         {
             var invoice = new Invoice();
-
+            invoice.InvoiceDate = DateTime.Now;
+            
             ViewBag.CustomerID = new SelectList(db.Customer, "CustomerID", "CustomerName");
             ViewBag.EmployeeID = new SelectList(db.Employee, "EmployeeID", "EmployeeName");
             ViewBag.PaymentModeID = new SelectList(db.PaymentMode, "PaymentModeID", "PaymentModeName");

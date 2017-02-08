@@ -20,9 +20,9 @@
         var newIndex = $invoiceTable.find("tr").size() - 2;
 
 
-        $invoiceTable.find("tr.template")
+        $invoiceTable.find("tr.InvoiceTemplate")
             .clone()
-            .removeClass("template")
+            .removeClass("InvoiceTemplate")
             //.addClass("selected")
             //.find("td.prod").text($prodID).end()
             //.find("td.price").text($prodPrice).end()

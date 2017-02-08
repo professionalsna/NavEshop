@@ -22,7 +22,9 @@ namespace EShop
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/Eshop.css"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts/eshop").Include(
                      "~/Scripts/Eshop.js"));
